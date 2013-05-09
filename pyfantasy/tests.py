@@ -16,6 +16,7 @@ class TestAPIFunctions(MyUnitTestCase):
     """Tests the interface with pyrest"""
 
     _KEY = 'thisismykey'
+    _BASE_URL = 'http://api.fantasyfootballnerd.com'
 
     def setUp(self):
 
@@ -38,5 +39,8 @@ class TestAPIFunctions(MyUnitTestCase):
 
     def test_api_object_created(self):
         self.assertIsInstance(self.api._api, api.Api)
+
+    def test_api_api_url_is_right(self):
+        self.assertEqual(self.api._api.base_url, self._BASE_URL)
 
 unittest.main()
