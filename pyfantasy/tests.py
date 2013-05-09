@@ -14,10 +14,11 @@ class MyUnitTestCase(unittest.TestCase):
 class TestAPIFunctions(MyUnitTestCase):
     """Tests the interface with pyrest"""
 
-    def setUp(self):
-        self._key = 'thisismykey'
+    _KEY = 'thisismykey'
 
-        self.api = api_wrapper.Api(self._key)
+    def setUp(self):
+
+        self.api = api_wrapper.Api(self._KEY)
 
         self._endpoint_keys = [
             'season_schedule',
@@ -32,6 +33,6 @@ class TestAPIFunctions(MyUnitTestCase):
         pass
 
     def test_init_saves_api_key(self):
-        self.assertEqual(self.api._api_key, self._key)
+        self.assertEqual(self.api._api_key, self._KEY)
 
 unittest.main()
