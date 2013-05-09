@@ -1,5 +1,5 @@
 class Api(object):
-    pass
+    _api_key = ''
 
     def __init__(self, api_key):
         pass
