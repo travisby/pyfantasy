@@ -22,14 +22,14 @@ class TestAPIFunctions(MyUnitTestCase):
 
         self.api = api_wrapper.Api(self._KEY)
 
-        self._endpoint_keys = [
-            'season_schedule',
-            'week_projections',
-            'week_injuries',
-            'players',
-            'player',
-            'player_draft_rankings',
-        ]
+        self._endpoints = {
+            'season_schedule': 'ffnScheduleXML.php',
+            'week_projections': 'ffnSitStartXML.php',
+            'week_injuries': 'ffnInjuriesXML.php',
+            'players': 'ffnPlayersXML.php',
+            'player': 'ffnPlayerDetailsXML.php',
+            'player_draft_rankings': 'ffnRankingsXML.php',
+        }
 
     def tearDown(self):
         pass
