@@ -43,4 +43,7 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_api_api_url_is_right(self):
         self.assertEqual(self.api._api.base_url, self._BASE_URL)
 
+    def test_api_api_endpoints_are_right(self):
+        self.assertEqual(self.api._api.endpoints, self._endpoints)
+
 unittest.main()
