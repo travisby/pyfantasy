@@ -35,4 +35,7 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_init_saves_api_key(self):
         self.assertEqual(self.api._api_key, self._KEY)
 
+    def test_api_object_created(self):
+        self.assertIsNotNone(self.api._api)
+
 unittest.main()
