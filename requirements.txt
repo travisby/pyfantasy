@@ -1,0 +1,2 @@
+pyrest==0.5.0
+wsgiref==0.1.2
