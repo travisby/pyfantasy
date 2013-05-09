@@ -2,4 +2,4 @@ class Api(object):
     _api_key = ''
 
     def __init__(self, api_key):
-        pass
+        self._api_key = api_key
