@@ -1,5 +1,6 @@
 import unittest
 import api_wrapper
+import api
 
 
 class MyUnitTestCase(unittest.TestCase):
@@ -36,6 +37,6 @@ class TestAPIFunctions(MyUnitTestCase):
         self.assertEqual(self.api._api_key, self._KEY)
 
     def test_api_object_created(self):
-        self.assertIsNotNone(self.api._api)
+        self.assertIsInstance(self.api._api, api.Api)
 
 unittest.main()
