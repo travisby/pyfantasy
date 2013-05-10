@@ -1,6 +1,7 @@
 import unittest
 import api_wrapper
 import api
+import xml.etree.ElementTree
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
 
@@ -55,5 +56,9 @@ class TestAPIFunctions(MyUnitTestCase):
         #    if the url+key were malformed.  This tests that :D
         server_response = self.api._make_request('season_schedule')[1]
         self.assertIn(NO_KEY_ERROR_MSG, server_response)
+
+    def test_request_xml_parsed(self):
+        response = self.api._handle_request('season_schedule')
+        self.assertIsInstance(response, xml.etree.ElementTree.ElementTree)
 
 unittest.main()

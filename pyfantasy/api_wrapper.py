@@ -29,3 +29,6 @@ class Api(object):
         data['apiKey'] = self._api_key
 
         return self._api.get(endpoint, parameters=data)
+
+    def _handle_request(self, endpoint, data=None):
+        pass
