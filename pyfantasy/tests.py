@@ -2,7 +2,7 @@ import unittest
 import api_wrapper
 import api
 
-HTTP_SUCCESS = 200
+NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
 
 
 class MyUnitTestCase(unittest.TestCase):
@@ -53,7 +53,7 @@ class TestAPIFunctions(MyUnitTestCase):
         # we use season_schedule because it should be the lightest request
         # Because of the way their api works, it will return nothing
         #    if the url+key were malformed.  This tests that :D
-        actual = int(self.api._make_request('season_schedule')[0]['status'])
-        self.assertEqual(actual, HTTP_SUCCESS)
+        server_response = self.api._make_request('season_schedule')[1]
+        self.assertIn(NO_KEY_ERROR_MSG, server_response)
 
 unittest.main()
