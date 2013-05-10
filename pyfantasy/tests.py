@@ -2,6 +2,8 @@ import unittest
 import api_wrapper
 import api
 
+HTTP_SUCCESS = 200
+
 
 class MyUnitTestCase(unittest.TestCase):
 
@@ -48,7 +50,7 @@ class TestAPIFunctions(MyUnitTestCase):
 
     def test_can_actually_make_request(self):
         # we use season_schedule because it should be the lightest request
-        actual = self.api._make_request('season_schedule')
-        self.assertIsNotNone(actual)
+        actual = int(self.api._make_request('season_schedule')[0]['status'])
+        self.assertEqual(actual, HTTP_SUCCESS)
 
 unittest.main()
