@@ -22,7 +22,10 @@ class Api(object):
         self._api_key = api_key
 
     def _make_request(self, endpoint, data=None):
+
         if not data:
             data = {}
+
         data['apiKey'] = self._api_key
-        return self._api.get(endpoint)
+
+        return self._api.get(endpoint, parameters=data)
