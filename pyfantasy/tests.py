@@ -59,6 +59,6 @@ class TestAPIFunctions(MyUnitTestCase):
 
     def test_request_xml_parsed(self):
         response = self.api._handle_request('season_schedule')
-        self.assertIsInstance(response, xml.etree.ElementTree.ElementTree)
+        self.assertIsInstance(response, xml.etree.ElementTree.Element)
 
 unittest.main()
