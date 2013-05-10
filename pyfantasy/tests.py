@@ -17,7 +17,8 @@ class MyUnitTestCase(unittest.TestCase):
 class TestAPIFunctions(MyUnitTestCase):
     """Tests the interface with pyrest"""
 
-    _KEY = 'thisismykey'
+    # _KEY must be a number
+    _KEY = '9'
     _BASE_URL = 'http://api.fantasyfootballnerd.com'
 
     def setUp(self):
@@ -50,6 +51,8 @@ class TestAPIFunctions(MyUnitTestCase):
 
     def test_can_actually_make_request(self):
         # we use season_schedule because it should be the lightest request
+        # Because of the way their api works, it will return nothing
+        #    if the url+key were malformed.  This tests that :D
         actual = int(self.api._make_request('season_schedule')[0]['status'])
         self.assertEqual(actual, HTTP_SUCCESS)
 
