@@ -1,4 +1,5 @@
 import api
+import xml.etree.ElementTree
 
 
 class Api(object):
@@ -31,4 +32,5 @@ class Api(object):
         return self._api.get(endpoint, parameters=data)
 
     def _handle_request(self, endpoint, data=None):
-        pass
+        response = self._make_request(endpoint, data)[1]
+        return xml.etree.ElementTree.fromstring(response)
