@@ -46,4 +46,9 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_api_api_endpoints_are_right(self):
         self.assertEqual(self.api._api.endpoints, self._endpoints)
 
+    def test_can_actually_make_request(self):
+        # we use season_schedule because it should be the lightest request
+        actual = self.api._make_request('season_schedule')
+        self.assertIsNotNone(actual)
+
 unittest.main()

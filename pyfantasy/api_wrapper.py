@@ -20,3 +20,6 @@ class Api(object):
         self._api.update_endpoints(self.ENDPOINTS)
 
         self._api_key = api_key
+
+    def _make_request(self, endpoint):
+        pass
