@@ -2,25 +2,9 @@ import unittest
 import api_wrapper
 import api
 import mock
+import sample_data.ffnScheduleXML as Schedule_XML
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
-XML = (
-    0,
-    """<?xml version="1.0" encoding="UTF-8"?>
-    <FantasyFootballNerd>
-    <SearchParams>
-    <ApiKey></ApiKey>
-    </SearchParams>
-    <PoweredBy>
-    <Logo></Logo>
-    <URL></URL>
-    </PoweredBy>
-    <Schedule Season="" Timezone="">
-    <Game gameId="" Week="" GameDate="" AwayTeam="" HomeTeam="" GameTime="" />
-    </Schedule>
-    </FantasyFootballNerd>
-    """
-)
 
 
 class MyUnitTestCase(unittest.TestCase):
@@ -67,7 +51,7 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_api_api_endpoints_are_right(self):
         self.assertEqual(self.api._api.endpoints, self._endpoints)
 
-    @mock.patch.object(api.Api, 'get', return_value=XML)
+    @mock.patch.object(api.Api, 'get', return_value=(None, Schedule_XML.XML))
     def test_season_schedule_returns_season_schedule_object(self, mocked):
         response = self.api.get_season_schedule()
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
