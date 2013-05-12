@@ -66,7 +66,6 @@ class Season_Schedule_Tests(MyUnitTestCase):
             self.SEASON,
             self.TIMEZONE
         )
-        pass
 
     def test_we_can_get_season(self):
         if not hasattr(self.season_schedule, 'season'):
