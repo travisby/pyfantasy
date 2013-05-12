@@ -38,11 +38,11 @@ class Api(object):
 
 
 class Season_Schedule(object):
-    _schedule = 0
+    _season = 0
 
-    def __init__(self, schedule):
-        self._schedule = schedule
+    def __init__(self, season):
+        self._season = season
 
     @property
-    def schedule(self):
-        return self._schedule
+    def season(self):
+        return self._season
