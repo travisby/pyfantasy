@@ -1,5 +1,6 @@
 import api
 import xml.etree.ElementTree
+import pytz
 
 
 class Api(object):
@@ -40,12 +41,12 @@ class Api(object):
 
 class Season_Schedule(object):
     _season = 0
-    _timezone = ''
+    _timezone = None
     _games = []
 
     def __init__(self, season, timezone, games):
         self._season = int(season)
-        self._timezone = timezone
+        self._set_timezone(timezone)
         self._games = games
 
     @property
@@ -59,3 +60,6 @@ class Season_Schedule(object):
     @property
     def games(self):
         return self._games
+
+    def _set_timezone(self, timezone_str):
+        self._timezone = pytz.timezone('US/Eastern')
