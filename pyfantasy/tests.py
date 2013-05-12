@@ -55,6 +55,11 @@ class TestAPIFunctions(MyUnitTestCase):
     @mock.patch.object(api.Api, 'get', return_value=(None, Schedule_XML.XML))
     def test_season_schedule_returns_season_schedule_object(self, mocked):
         response = self.api.get_season_schedule()
+
+        mocked.assert_called_with(
+            'season_schedule',
+            parameters={'apiKey': self._KEY}
+        )
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
 
 
