@@ -63,6 +63,8 @@ class Season_Schedule_Tests(MyUnitTestCase):
     # TODO add actual games in here
     GAMES = []
 
+    IS_OF_GAME_CLASS = lambda x: isinstance(x) == api_wrapper.Game
+
     def setUp(self):
         self.season_schedule = api_wrapper.Season_Schedule(
             self.SEASON,
@@ -78,9 +80,12 @@ class Season_Schedule_Tests(MyUnitTestCase):
         if not hasattr(self.season_schedule, 'timezone'):
             self.fail('Season_Schedule has no timezone attribute')
 
-    def test_we_can_get_games(self):
-        if not hasattr(self.season_schedule, 'games'):
-            self.fail('Season_Schedule has no games attribute')
+    def test_games_is_list_of_games(self):
+
+        self.assertNotIn(
+            False,
+            [self.IS_OF_GAME_CLASS(x) for x in self.season_schedule.games]
+        )
 
     def tearDown(self):
         pass
