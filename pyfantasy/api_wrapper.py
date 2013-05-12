@@ -36,4 +36,11 @@ class Api(object):
 
 
 class Season_Schedule(object):
-    pass
+    _schedule = 0
+
+    def __init__(self, schedule):
+        self._schedule = schedule
+
+    @property
+    def schedule(self):
+        return self._schedule
