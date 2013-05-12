@@ -3,6 +3,7 @@ import api_wrapper
 import api
 import mock
 import sample_data.ffnScheduleXML as Schedule_XML
+import datetime
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
 
@@ -75,9 +76,8 @@ class Season_Schedule_Tests(MyUnitTestCase):
     def test_season_is_int(self):
         self.assertIsInstance(self.season_schedule.season, int)
 
-    def test_we_can_get_timeone(self):
-        if not hasattr(self.season_schedule, 'timezone'):
-            self.fail('Season_Schedule has no timezone attribute')
+    def test_timezone_of_type_tzinfo(self):
+        self.assertIsInstance(self.season_schedule.timezone, datetime.tzinfo)
 
     def test_games_is_list_of_games(self):
 
