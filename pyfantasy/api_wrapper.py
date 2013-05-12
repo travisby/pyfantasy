@@ -37,10 +37,16 @@ class Api(object):
 
 class Season_Schedule(object):
     _season = 0
+    _timezone = ''
 
     def __init__(self):
         self._season = 0
+        self._timezone = ''
 
     @property
     def season(self):
         return self._season
+
+    @property
+    def timezone(self):
+        return self._timezone
