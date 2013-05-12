@@ -67,10 +67,6 @@ class Season_Schedule_Tests(MyUnitTestCase):
         func = lambda: self.schedule.season
         self.assertNotRaises(func, AttributeError)
 
-    def test_schedule_has_timezone_property(self):
-        func = lambda: self.schedule.timezone
-        self.assertNotRaises(func, AttributeError)
-
     def tearDown(self):
         pass
 
