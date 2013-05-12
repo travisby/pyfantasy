@@ -60,12 +60,7 @@ class TestAPIFunctions(MyUnitTestCase):
 class Season_Schedule_Tests(MyUnitTestCase):
 
     def setUp(self):
-        self.schedule = api_wrapper.Season_Schedule()
         pass
-
-    def test_schedule_has_season_property(self):
-        func = lambda: self.schedule.season
-        self.assertNotRaises(func, AttributeError)
 
     def tearDown(self):
         pass
