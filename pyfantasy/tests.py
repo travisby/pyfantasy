@@ -1,9 +1,27 @@
 import unittest
 import api_wrapper
 import api
+import mock
 import xml.etree.ElementTree
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
+XML = (
+    0,
+    """<?xml version="1.0" encoding="UTF-8"?>
+    <FantasyFootballNerd>
+    <SearchParams>
+    <ApiKey></ApiKey>
+    </SearchParams>
+    <PoweredBy>
+    <Logo></Logo>
+    <URL></URL>
+    </PoweredBy>
+    <Schedule Season="" Timezone="">
+    <Game gameId="" Week="" GameDate="" AwayTeam="" HomeTeam="" GameTime="" />
+    </Schedule>
+    </FantasyFootballNerd>
+    """
+)
 
 
 class MyUnitTestCase(unittest.TestCase):
@@ -57,7 +75,8 @@ class TestAPIFunctions(MyUnitTestCase):
         server_response = self.api._make_request('season_schedule')[1]
         self.assertIn(NO_KEY_ERROR_MSG, server_response)
 
-    def test_request_xml_parsed(self):
+    @mock.patch.object(api_wrapper.Api, '_make_request', return_value=XML)
+    def test_request_xml_parsed(self, mocked):
         response = self.api._handle_request('season_schedule')
         self.assertIsInstance(response, xml.etree.ElementTree.Element)
 
