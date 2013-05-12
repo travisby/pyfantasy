@@ -36,11 +36,4 @@ class Api(object):
 
 
 class Season_Schedule(object):
-    _season = 0
-
-    def __init__(self):
-        self._season = 0
-
-    @property
-    def season(self):
-        return self._season
+    pass
