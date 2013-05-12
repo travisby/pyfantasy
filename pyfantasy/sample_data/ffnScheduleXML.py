@@ -1,5 +1,4 @@
-XML = """
-<?xml version="1.0" encoding="UTF-8"?>
+XML = """<?xml version="1.0" encoding="UTF-8"?>
 <FantasyFootballNerd>
 <SearchParams>
 <ApiKey>0000000000000000</ApiKey>
