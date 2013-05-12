@@ -60,11 +60,14 @@ class TestAPIFunctions(MyUnitTestCase):
 class Season_Schedule_Tests(MyUnitTestCase):
     SEASON = '2011'
     TIMEZONE = 'Eastern'
+    # TODO add actual games in here
+    GAMES = []
 
     def setUp(self):
         self.season_schedule = api_wrapper.Season_Schedule(
             self.SEASON,
-            self.TIMEZONE
+            self.TIMEZONE,
+            self.GAMES,
         )
 
     def test_we_can_get_season(self):

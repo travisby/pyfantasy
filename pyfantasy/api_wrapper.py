@@ -27,7 +27,7 @@ class Api(object):
         schedule = result.iterfind('Schedule').next()
         season = schedule.get('Season')
         timezone = schedule.get('Timezone')
-        return Season_Schedule(season, timezone)
+        return Season_Schedule(season, timezone, schedule.getchildren())
 
     def _handle_request(self, endpoint, data=None):
         if not data:
@@ -41,10 +41,12 @@ class Api(object):
 class Season_Schedule(object):
     _season = 0
     _timezone = ''
+    _games = []
 
-    def __init__(self, season, timezone):
+    def __init__(self, season, timezone, games):
         self._season = season
         self._timezone = timezone
+        self._games = games
 
     @property
     def season(self):
@@ -53,3 +55,7 @@ class Season_Schedule(object):
     @property
     def timezone(self):
         return self._timezone
+
+    @property
+    def games(self):
+        return self._games
