@@ -68,6 +68,10 @@ class Season_Schedule_Tests(MyUnitTestCase):
         if not hasattr(self.season_schedule, 'season'):
             self.fail('Season_Schedule has no season attribute')
 
+    def test_we_can_get_timeone(self):
+        if not hasattr(self.season_schedule, 'timezone'):
+            self.fail('Season_Schedule has no timezone attribute')
+
     def tearDown(self):
         pass
 
