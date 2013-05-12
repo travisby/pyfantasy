@@ -3,6 +3,10 @@ import xml.etree.ElementTree
 import pytz
 
 
+class Unknown_Timezone(Exception):
+    pass
+
+
 class Api(object):
     BASE_URL = 'http://api.fantasyfootballnerd.com'
     ENDPOINTS = {

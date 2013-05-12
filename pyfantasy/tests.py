@@ -61,6 +61,7 @@ class TestAPIFunctions(MyUnitTestCase):
 class Season_Schedule_Tests(MyUnitTestCase):
     SEASON = '2011'
     TIMEZONE = 'Eastern'
+    UNKNOWN_TIMEZONE = 'fish'
     # TODO add actual games in here
     GAMES = []
 
@@ -85,6 +86,14 @@ class Season_Schedule_Tests(MyUnitTestCase):
             False,
             [self.IS_OF_GAME_CLASS(x) for x in self.season_schedule.games]
         )
+
+    def test_raise_error_on_unknown_timezone(self):
+        constructor = lambda: api_wrapper.Season_Schedule(
+            self.SEASON,
+            self.UNKNOWN_TIMEZONE,
+            self.GAMES,
+        )
+        self.assertRaises(api_wrapper.Unknown_Timezone, constructor)
 
     def tearDown(self):
         pass
