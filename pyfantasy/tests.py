@@ -72,9 +72,8 @@ class Season_Schedule_Tests(MyUnitTestCase):
             self.GAMES,
         )
 
-    def test_we_can_get_season(self):
-        if not hasattr(self.season_schedule, 'season'):
-            self.fail('Season_Schedule has no season attribute')
+    def test_season_is_int(self):
+        self.assertIsInstance(self.season_schedule.season, int)
 
     def test_we_can_get_timeone(self):
         if not hasattr(self.season_schedule, 'timezone'):
