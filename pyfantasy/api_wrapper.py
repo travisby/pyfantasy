@@ -66,4 +66,7 @@ class Season_Schedule(object):
         return self._games
 
     def _set_timezone(self, timezone_str):
-        self._timezone = pytz.timezone('US/Eastern')
+        if timezone_str == 'Eastern':
+            self._timezone = pytz.timezone('US/Eastern')
+        else:
+            raise Unknown_Timezone(timezone_str)
