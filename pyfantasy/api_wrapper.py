@@ -44,7 +44,7 @@ class Season_Schedule(object):
     _games = []
 
     def __init__(self, season, timezone, games):
-        self._season = season
+        self._season = int(season)
         self._timezone = timezone
         self._games = games
 
