@@ -34,6 +34,9 @@ class Api(object):
         timezone = schedule.get('Timezone')
         return Season_Schedule(season, timezone, schedule.getchildren())
 
+    def get_all_players(self):
+        return []
+
     def _handle_request(self, endpoint, data=None):
         if not data:
             data = {}

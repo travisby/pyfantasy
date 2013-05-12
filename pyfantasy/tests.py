@@ -62,6 +62,16 @@ class TestAPIFunctions(MyUnitTestCase):
         )
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
 
+    @mock.patch.object(api.Api, 'get', return_value=(None, Schedule_XML.XML))
+    def test_all_players_returns_list_of_players(self, mocked):
+        IS_OF_PLAYER_CLASS = lambda x: isinstance(x, api_wrapper.Player)
+
+        self.assertNotIn(
+            False,
+            [IS_OF_PLAYER_CLASS(x) for x in self.api.get_all_players()],
+        )
+        mocked.assert_called_with('all_players')
+
 
 class Season_Schedule_Tests(MyUnitTestCase):
     SEASON = '2011'
