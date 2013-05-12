@@ -90,4 +90,14 @@ class TestAPIFunctions(MyUnitTestCase):
         self.api.get_season_schedule()
         mocked.assert_called_with('season_schedule')
 
+
+class Season_Schedule_Tests(MyUnitTestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+
 unittest.main()
