@@ -2,7 +2,6 @@ import unittest
 import api_wrapper
 import api
 import mock
-import xml.etree.ElementTree
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
 XML = (
@@ -68,27 +67,10 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_api_api_endpoints_are_right(self):
         self.assertEqual(self.api._api.endpoints, self._endpoints)
 
-    def test_can_actually_make_request(self):
-        # we use season_schedule because it should be the lightest request
-        # Because of the way their api works, it will return nothing
-        #    if the url+key were malformed.  This tests that :D
-        server_response = self.api._make_request('season_schedule')[1]
-        self.assertIn(NO_KEY_ERROR_MSG, server_response)
-
-    @mock.patch.object(api_wrapper.Api, '_make_request', return_value=XML)
-    def test_request_xml_parsed(self, mocked):
-        response = self.api._handle_request('season_schedule')
-        self.assertIsInstance(response, xml.etree.ElementTree.Element)
-
-    @mock.patch.object(api_wrapper.Api, '_handle_request', return_value=xml.etree.ElementTree.fromstring(XML[1]))
+    @mock.patch.object(api.Api, 'get', return_value=XML)
     def test_season_schedule_returns_season_schedule_object(self, mocked):
         response = self.api.get_season_schedule()
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
-
-    @mock.patch.object(api_wrapper.Api, '_handle_request', return_value=xml.etree.ElementTree.fromstring(XML[1]))
-    def test_season_schedule_calls_handle_request(self, mocked):
-        self.api.get_season_schedule()
-        mocked.assert_called_with('season_schedule')
 
 
 class Season_Schedule_Tests(MyUnitTestCase):

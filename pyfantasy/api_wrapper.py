@@ -26,17 +26,12 @@ class Api(object):
         self._handle_request('season_schedule')
         return Season_Schedule()
 
-    def _make_request(self, endpoint, data=None):
-
+    def _handle_request(self, endpoint, data=None):
         if not data:
             data = {}
-
         data['apiKey'] = self._api_key
 
-        return self._api.get(endpoint, parameters=data)
-
-    def _handle_request(self, endpoint, data=None):
-        response = self._make_request(endpoint, data)[1]
+        response = self._api.get(endpoint, parameters=data)[1]
         return xml.etree.ElementTree.fromstring(response)
 
 
