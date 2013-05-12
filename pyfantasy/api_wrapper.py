@@ -23,6 +23,7 @@ class Api(object):
         self._api_key = api_key
 
     def get_season_schedule(self):
+        self._handle_request('season_schedule')
         return Season_Schedule()
 
     def _make_request(self, endpoint, data=None):
