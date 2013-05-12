@@ -70,3 +70,7 @@ class Season_Schedule(object):
             self._timezone = pytz.timezone('US/Eastern')
         else:
             raise Unknown_Timezone(timezone_str)
+
+
+class Game(object):
+    pass

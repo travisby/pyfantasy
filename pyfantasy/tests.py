@@ -63,9 +63,7 @@ class Season_Schedule_Tests(MyUnitTestCase):
     TIMEZONE = 'Eastern'
     UNKNOWN_TIMEZONE = 'fish'
     # TODO add actual games in here
-    GAMES = []
-
-    IS_OF_GAME_CLASS = lambda x: isinstance(x) == api_wrapper.Game
+    GAMES = [None, None]
 
     def setUp(self):
         self.season_schedule = api_wrapper.Season_Schedule(
@@ -81,10 +79,11 @@ class Season_Schedule_Tests(MyUnitTestCase):
         self.assertIsInstance(self.season_schedule.timezone, datetime.tzinfo)
 
     def test_games_is_list_of_games(self):
+        IS_OF_GAME_CLASS = lambda x: isinstance(x, api_wrapper.Game)
 
         self.assertNotIn(
             False,
-            [self.IS_OF_GAME_CLASS(x) for x in self.season_schedule.games]
+            [IS_OF_GAME_CLASS(x) for x in self.season_schedule.games],
         )
 
     def test_raise_error_on_unknown_timezone(self):
