@@ -84,6 +84,5 @@ class TestAPIFunctions(MyUnitTestCase):
     def test_season_schedule_returns_season_schedule_object(self, mocked):
         response = self.api.get_season_schedule()
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
-        pass
 
 unittest.main()
