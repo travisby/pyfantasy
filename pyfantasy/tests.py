@@ -85,4 +85,9 @@ class TestAPIFunctions(MyUnitTestCase):
         response = self.api.get_season_schedule()
         self.assertIsInstance(response, api_wrapper.Season_Schedule)
 
+    @mock.patch.object(api_wrapper.Api, '_handle_request', return_value=xml.etree.ElementTree.fromstring(XML[1]))
+    def test_season_schedule_calls_handle_request(self, mocked):
+        self.api.get_season_schedule()
+        mocked.assert_called_with('season_schedule')
+
 unittest.main()
