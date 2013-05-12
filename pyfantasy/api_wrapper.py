@@ -23,8 +23,10 @@ class Api(object):
         self._api_key = api_key
 
     def get_season_schedule(self):
-        self._handle_request('season_schedule')
-        return Season_Schedule()
+        result = self._handle_request('season_schedule')
+        schedule = result.iterfind('Schedule').next()
+        season = schedule.get('Season')
+        return Season_Schedule(season)
 
     def _handle_request(self, endpoint, data=None):
         if not data:
