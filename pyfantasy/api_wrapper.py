@@ -22,6 +22,9 @@ class Api(object):
 
         self._api_key = api_key
 
+    def get_season_schedule(self):
+        pass
+
     def _make_request(self, endpoint, data=None):
 
         if not data:
@@ -34,3 +37,7 @@ class Api(object):
     def _handle_request(self, endpoint, data=None):
         response = self._make_request(endpoint, data)[1]
         return xml.etree.ElementTree.fromstring(response)
+
+
+class Season_Schedule(object):
+    pass
