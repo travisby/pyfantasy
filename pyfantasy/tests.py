@@ -64,9 +64,9 @@ class Season_Schedule_Tests(MyUnitTestCase):
         self.season_schedule = api_wrapper.Season_Schedule(self.SEASON)
         pass
 
-    def test_we_can_get_schedule_time(self):
-        if not hasattr(self.season_schedule, 'schedule'):
-            self.fail('Season_Schedule has no schedule attribute')
+    def test_we_can_get_season(self):
+        if not hasattr(self.season_schedule, 'season'):
+            self.fail('Season_Schedule has no season attribute')
 
     def tearDown(self):
         pass
