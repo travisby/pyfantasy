@@ -79,5 +79,5 @@ class Game(object):
     pass
 
 
-class GameXML(object):
+class GameXML(Game):
     pass
