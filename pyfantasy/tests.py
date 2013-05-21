@@ -124,6 +124,7 @@ class GameXML_Tests(MyUnitTestCase):
         self.assertIsInstance(self.game, api_wrapper.Game)
 
     def test_game_has_correct_date(self):
+        """Here this test ensures correct XML parsing"""
 
         expected_date = datetime.date(2012, 9, 9)
 
