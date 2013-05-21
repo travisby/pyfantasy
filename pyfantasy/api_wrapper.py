@@ -80,8 +80,10 @@ class Game(object):
     date = datetime.date.today()
 
     def __init__(self, game_date):
-        pass
+        self.date = game_date
 
 
 class GameXML(Game):
-    pass
+
+    def __init__(self):
+        pass
