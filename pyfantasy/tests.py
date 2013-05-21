@@ -134,4 +134,20 @@ class GameXML_Tests(MyUnitTestCase):
         pass
 
 
+class Game_Tests(MyUnitTestCase):
+
+    game = None
+
+    def setUp(self):
+        self.game = api_wrapper.Game()
+
+    def tearDown(self):
+        pass
+
+    def test_game_has_correct_date(self):
+
+        expected_date = datetime.date(2012, 9, 9)
+
+        self.assertEqual(self.game.date, expected_date)
+
 unittest.main()
