@@ -123,6 +123,13 @@ class GameXML_Tests(MyUnitTestCase):
     def test_gameXML_object_is_game_object(self):
         self.assertIsInstance(self.game, api_wrapper.Game)
 
+    def test_game_has_correct_date(self):
+
+        expected_date = datetime.date(2012, 9, 9)
+
+        self.assertEqual(self.game.date, expected_date)
+        pass
+
     def tearDown(self):
         pass
 

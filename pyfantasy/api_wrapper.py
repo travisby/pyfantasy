@@ -1,6 +1,7 @@
 import api
 import xml.etree.ElementTree
 import pytz
+import datetime
 
 
 class Unknown_Timezone(Exception):
@@ -76,7 +77,7 @@ class Season_Schedule(object):
 
 
 class Game(object):
-    pass
+    date = datetime.date.today()
 
 
 class GameXML(Game):
