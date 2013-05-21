@@ -77,3 +77,7 @@ class Season_Schedule(object):
 
 class Game(object):
     pass
+
+
+class GameXML(object):
+    pass

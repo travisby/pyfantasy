@@ -115,8 +115,13 @@ class Season_Schedule_Tests(MyUnitTestCase):
 
 class GameXML_Tests(MyUnitTestCase):
 
+    game = None
+
     def setUp(self):
-        pass
+        self.game = api_wrapper.GameXML()
+
+    def test_gameXML_object_is_game_object(self):
+        self.assertIsInstance(self.game, api_wrapper.Game)
 
     def tearDown(self):
         pass
