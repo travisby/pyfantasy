@@ -113,4 +113,13 @@ class Season_Schedule_Tests(MyUnitTestCase):
         pass
 
 
+class GameXML_Tests(MyUnitTestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+
 unittest.main()
