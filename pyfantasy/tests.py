@@ -3,7 +3,9 @@ import api_wrapper
 import api
 import mock
 import sample_data.ffnScheduleXML as Schedule_XML
+import sample_data.one_game as Game_XML
 import datetime
+import xml.etree.ElementTree
 
 NO_KEY_ERROR_MSG = "<Error>Invalid API Key.</Error>"
 
@@ -118,7 +120,10 @@ class GameXML_Tests(MyUnitTestCase):
     game = None
 
     def setUp(self):
-        self.game = api_wrapper.GameXML()
+        xml_tree = xml.etree.ElementTree.fromstring(Game_XML.XML)
+        game_xml = xml_tree.iterfind('Game').next()
+
+        self.game = api_wrapper.GameXML(game_xml)
 
     def test_gameXML_object_is_game_object(self):
         self.assertIsInstance(self.game, api_wrapper.Game)

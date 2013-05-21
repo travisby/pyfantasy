@@ -85,5 +85,14 @@ class Game(object):
 
 class GameXML(Game):
 
-    def __init__(self):
-        pass
+    def __init__(self, game_xml):
+        self.set_date(game_xml.get('GameDate'))
+
+    def set_date(self, game_xml):
+        game_str_split = game_xml.split('-')
+
+        year = int(game_str_split[0])
+        month = int(game_str_split[1])
+        day = int(game_str_split[2])
+
+        self.date = datetime.date(year, month, day)
