@@ -79,6 +79,9 @@ class Season_Schedule(object):
 class Game(object):
     date = datetime.date.today()
 
+    def __init__(self, game_date):
+        pass
+
 
 class GameXML(Game):
     pass

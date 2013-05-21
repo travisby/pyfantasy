@@ -123,7 +123,7 @@ class GameXML_Tests(MyUnitTestCase):
     def test_gameXML_object_is_game_object(self):
         self.assertIsInstance(self.game, api_wrapper.Game)
 
-    def test_game_has_correct_date(self):
+    def test_gameXML_has_correct_date(self):
         """Here this test ensures correct XML parsing"""
 
         expected_date = datetime.date(2012, 9, 9)
@@ -138,9 +138,10 @@ class GameXML_Tests(MyUnitTestCase):
 class Game_Tests(MyUnitTestCase):
 
     game = None
+    game_date = datetime.date(2012, 9, 9)
 
     def setUp(self):
-        self.game = api_wrapper.Game()
+        self.game = api_wrapper.Game(self.game_date)
 
     def tearDown(self):
         pass
@@ -149,6 +150,6 @@ class Game_Tests(MyUnitTestCase):
 
         expected_date = datetime.date(2012, 9, 9)
 
-        self.assertEqual(self.game.date, expected_date)
+        self.assertEqual(self.game.date, self.game_date)
 
 unittest.main()
